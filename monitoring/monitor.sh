@@ -36,7 +36,7 @@ if [ "$localVersion" != "$remoteVersion" ]; then
 	needsUpdate=1
 fi
 
-logInfo=$(journalctl --unit=ironfishd-pool -n 1 --no-pager | grep -Po "(^|\s)+(Found share: )\K([\sA-z0-9/]|\.)*(?=\s|$)")
+logInfo=$(journalctl --unit=%service_name% -n 1 --no-pager | grep -Po "(^|\s)+(Found share: )\K([\sA-z0-9/]|\.)*(?=\s|$)")
 logInfoArr=(${logInfo// / })
 hashRate=${logInfoArr[2]}
 if [ "$hashRate" == "" ]; then

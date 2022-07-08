@@ -4,6 +4,7 @@ telegraf_user=<telegraf user name>
 telegraf_pass=<telegraf password>
 user=<your user>
 graffiti=<your graffiti>
+service_name=ironfishd-pool
 root_path=/$user
 
 
@@ -31,6 +32,7 @@ sed -i "s#%user%#$user#g" /etc/telegraf/telegraf.conf
 mkdir -p $root_path/monitoring
 wget https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/monitor.sh -O $root_path/monitoring/monitor.sh
 chmod +x $root_path/monitoring/monitor.sh
+sed -i "s#%service_name%#$service_name#g" $root_path/monitoring/monitor.sh
 systemctl start telegraf
 echo "install autodeposit"
 wget -q -O $root_path/monitoring/deposit.php https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/deposit.php

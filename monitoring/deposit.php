@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 set_time_limit(900 - 60);
 
 $account = $argv[1] ?? '';
-$HOME = '/root';
+$HOME = '%root_path%';
 
 function msg($message, $exit = true)
 {

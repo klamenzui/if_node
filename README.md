@@ -1,4 +1,4 @@
-# if_node
+# if_node - Ironfish node monitoring
 
 Installation: 
 1. get 'install.sh' script

@@ -3,6 +3,7 @@ main_url="http://<your ip>:<your port>"
 telegraf_user=<telegraf user name>
 telegraf_pass=<telegraf password>
 user=<your user>
+graffiti=<your graffiti>
 root_path=/$user
 
 
@@ -12,7 +13,7 @@ deb https://repos.influxdata.com/ubuntu bionic stable
 EOF
 sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 sudo apt-get update
-sudo apt-get -y install telegraf jq bc
+sudo apt-get -y install telegraf jq bc cron php-cli
 sudo systemctl enable --now telegraf
 sudo systemctl is-enabled telegraf
 sudo adduser telegraf sudo
@@ -31,3 +32,10 @@ mkdir -p $root_path/monitoring
 wget https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/monitor.sh -O $root_path/monitoring/monitor.sh
 chmod +x $root_path/monitoring/monitor.sh
 systemctl start telegraf
+echo "install autodeposit"
+wget -q -O $root_path/monitoring/deposit.php https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/deposit.php
+crontab -l | grep -v 'deposit.php' | crontab -
+(crontab -l ; echo "*/15 * * * * php $root_path/monitoring/deposit.php $graffiti >> $root_path/monitoring/deposit.log 2>&1") | crontab -
+sudo systemctl enable cron
+sudo service cron reload
+#sudo pkill -f deposit.php

@@ -10,7 +10,6 @@ Installation:
   - change data in variables to your data
   - chmod +x ~/install.sh
  2. Run install.sh
-  - cd ~/monitoring/
   - ./install.sh
  3. Import 'grafana.json' into your grafana
 

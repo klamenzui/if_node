@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1657203584022,
+  "iteration": 1657610410461,
   "links": [],
   "panels": [
     {
@@ -106,8 +106,8 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "title": "Quick stats $server",
@@ -142,7 +142,7 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 3,
+        "w": 2,
         "x": 0,
         "y": 5
       },
@@ -178,8 +178,8 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "sparkline": {
@@ -237,158 +237,10 @@
         }
       ],
       "thresholds": "",
-      "title": "Validator Uptime",
+      "title": "Node Uptime",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#73BF69",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(245, 54, 54, 0.9)"
-      ],
-      "datasource": "metricsdb",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 2,
-        "x": 3,
-        "y": 5
-      },
-      "height": "150",
-      "id": 73,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "scopedVars": {
-        "server": {
-          "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT last(\"usage_idle\") * -1 + 100 FROM \"cpu\" WHERE (\"host\" =~ /^$server$/ AND \"cpu\" = 'cpu-total') AND $timeFilter GROUP BY time($interval) fill(null)",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_idle"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [
-                  "* -1 + 100"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$server$/"
-            },
-            {
-              "condition": "AND",
-              "key": "cpu",
-              "operator": "=",
-              "value": "cpu-total"
-            }
-          ]
-        }
-      ],
-      "thresholds": "70,80,90",
-      "title": "CPU usage",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -407,6 +259,153 @@
             "mode": "thresholds"
           },
           "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "Validating",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "Up",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 3,
+              "text": "Error",
+              "to": "",
+              "type": 1,
+              "value": "2"
+            },
+            {
+              "from": "",
+              "id": 4,
+              "text": "Delinquent",
+              "to": "",
+              "type": 1,
+              "value": "3"
+            }
+          ],
+          "noValue": "-1",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 5
+      },
+      "id": 54,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nodemonitor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"status\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "title": "Status",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 1,
           "mappings": [
             {
               "id": 0,
@@ -416,41 +415,46 @@
               "value": "null"
             }
           ],
-          "max": 100,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
-                "color": "semi-dark-orange",
-                "value": 70
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 15
               },
               {
-                "color": "dark-red",
-                "value": 80
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "green",
+                "value": 40
               }
             ]
           },
-          "unit": "percent"
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 2,
         "w": 2,
-        "x": 5,
+        "x": 4,
         "y": 5
       },
-      "id": 52,
+      "id": 131,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "orientation": "horizontal",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -458,18 +462,214 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "text": {},
+        "textMode": "auto"
       },
       "pluginVersion": "7.4.3",
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "system",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"hashRate\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "load5"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "title": "Hash rate MH/s",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 5
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "alias": "",
+          "groupBy": [],
+          "measurement": "nodemonitor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"version\" FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "version"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Version",
+      "transformations": [],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 52,
+      "interval": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxDataPoints": 100,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "dsType": "influxdb",
@@ -515,214 +715,49 @@
           ]
         }
       ],
-      "title": "RAM usage",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "metricsdb",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 7,
-        "y": 5
-      },
-      "id": 29,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "scopedVars": {
-        "server": {
-          "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
-        }
-      },
-      "targets": [
-        {
-          "alias": "",
-          "groupBy": [],
-          "measurement": "nodemonitor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT \"version\" FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "version"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$server$/"
-            }
-          ]
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Version",
-      "transformations": [],
+      "title": "RAM usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
       "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "metricsdb",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "decimals": 1,
-          "mappings": [
-            {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 12
-              },
-              {
-                "color": "rgba(245, 54, 54, 0.9)",
-                "value": 15
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
       },
-      "gridPos": {
-        "h": 3,
-        "w": 2,
-        "x": 9,
-        "y": 5
-      },
-      "id": 69,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.4.3",
-      "scopedVars": {
-        "server": {
-          "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
-        }
-      },
-      "targets": [
+      "yaxes": [
         {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "system",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "load5"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$server$/"
-            }
-          ]
+          "$$hashKey": "object:248",
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:249",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
       ],
-      "title": "Server Load 5m",
-      "transparent": true,
-      "type": "stat"
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "alert": {
@@ -786,9 +821,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
+        "h": 6,
+        "w": 8,
+        "x": 16,
         "y": 5
       },
       "hiddenSeries": false,
@@ -817,8 +852,8 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "seriesOverrides": [],
@@ -927,73 +962,45 @@
             "mode": "thresholds"
           },
           "custom": {},
-          "decimals": 0,
           "mappings": [
             {
-              "from": "",
-              "id": 1,
-              "text": "Validating",
-              "to": "",
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
               "type": 1,
-              "value": "0"
-            },
-            {
-              "from": "",
-              "id": 2,
-              "text": "Up",
-              "to": "",
-              "type": 1,
-              "value": "1"
-            },
-            {
-              "from": "",
-              "id": 3,
-              "text": "Error",
-              "to": "",
-              "type": 1,
-              "value": "2"
-            },
-            {
-              "from": "",
-              "id": 4,
-              "text": "Delinquent",
-              "to": "",
-              "type": 1,
-              "value": "3"
+              "value": "null"
             }
           ],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#73BF69",
                 "value": null
               },
               {
-                "color": "yellow",
-                "value": 1
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 70
               },
               {
-                "color": "orange",
-                "value": 2
-              },
-              {
-                "color": "dark-red",
-                "value": 3
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "percent"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
-        "w": 3,
+        "w": 2,
         "x": 0,
         "y": 7
       },
-      "id": 54,
+      "id": 73,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
@@ -1016,8 +1023,149 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"usage_idle\") * -1 + 100 FROM \"cpu\" WHERE (\"host\" =~ /^$server$/ AND \"cpu\" = 'cpu-total') AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "usage_idle"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "* -1 + 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "cpu",
+              "operator": "=",
+              "value": "cpu-total"
+            }
+          ]
+        }
+      ],
+      "title": "CPU usage",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "Started",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "Stoped",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 7
+      },
+      "id": 133,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "targets": [
@@ -1040,7 +1188,7 @@
           "measurement": "nodemonitor",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"status\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "query": "SELECT last(\"statusTelemetry\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1067,7 +1215,148 @@
           ]
         }
       ],
-      "title": "Status",
+      "title": "Telemetry",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "SYNCING",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "NOT SYNCED",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            },
+            {
+              "from": "",
+              "id": 3,
+              "text": "SYNCED",
+              "to": "",
+              "type": 1,
+              "value": "2"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 7
+      },
+      "id": 135,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nodemonitor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"statusBlockchain\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "title": "Blockchain",
       "transparent": true,
       "type": "stat"
     },
@@ -1115,9 +1404,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 2,
-        "x": 7,
+        "x": 6,
         "y": 7
       },
       "id": 98,
@@ -1143,8 +1432,8 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "targets": [
@@ -1206,20 +1495,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "purple",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 12
               },
               {
                 "color": "rgba(245, 54, 54, 0.9)",
                 "value": 15
-              },
-              {
-                "color": "#EAB839",
-                "value": 20
-              },
-              {
-                "color": "green",
-                "value": 40
               }
             ]
           },
@@ -1228,12 +1513,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 2,
-        "x": 9,
-        "y": 8
+        "x": 0,
+        "y": 9
       },
-      "id": 131,
+      "id": 69,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
@@ -1256,8 +1541,8 @@
       "scopedVars": {
         "server": {
           "selected": true,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         }
       },
       "targets": [
@@ -1280,8 +1565,6 @@
           "measurement": "system",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"hashRate\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -1307,7 +1590,291 @@
           ]
         }
       ],
-      "title": "Hash rate MH/s",
+      "title": "Server Load 5m",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "Started",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "Stoped",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 9
+      },
+      "id": 134,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nodemonitor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"statusMining\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "title": "Mining",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "metricsdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "NOT SYNCED",
+              "to": "",
+              "type": 1,
+              "value": "0"
+            },
+            {
+              "from": "",
+              "id": 2,
+              "text": "SYNCING",
+              "to": "",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": 3,
+              "text": "SYNCED",
+              "to": "",
+              "type": 1,
+              "value": "2"
+            },
+            {
+              "from": "",
+              "id": 4,
+              "text": "IDLE",
+              "to": "",
+              "type": 1,
+              "value": "3"
+            }
+          ],
+          "max": 5,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 2
+              },
+              {
+                "color": "blue",
+                "value": 3
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 9
+      },
+      "id": 132,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.4.3",
+      "scopedVars": {
+        "server": {
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
+        }
+      },
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nodemonitor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"statusSyncer\") FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "title": "Syncer",
       "transparent": true,
       "type": "stat"
     },
@@ -1318,7 +1885,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 44
       },
       "id": 117,
       "panels": [],
@@ -1348,7 +1915,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 122,
@@ -1465,7 +2032,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "metricsdb",
-      "decimals": 4,
+      "decimals": 3,
       "fieldConfig": {
         "defaults": {
           "color": {},
@@ -1484,7 +2051,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 124,
@@ -1616,7 +2183,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 56,
@@ -1693,7 +2260,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Tolal transactions",
+      "title": "Total transactions",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1786,7 +2353,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 21
+        "y": 53
       },
       "id": 4,
       "options": {
@@ -1813,7 +2380,7 @@
           "measurement": "nodemonitor",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"validatorBalance\" FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter",
+          "query": "SELECT \"validatorBalance\", \"validatorAvailableAmount\" FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1848,7 +2415,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 61
       },
       "id": 113,
       "panels": [],
@@ -1877,7 +2444,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 62
       },
       "height": "300",
       "hiddenSeries": false,
@@ -2022,7 +2589,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 102,
@@ -2175,7 +2742,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 72
       },
       "hiddenSeries": false,
       "id": 85,
@@ -2401,7 +2968,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 40
+        "y": 72
       },
       "hiddenSeries": false,
       "id": 106,
@@ -2562,7 +3129,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 50
+        "y": 82
       },
       "height": "400",
       "hiddenSeries": false,
@@ -2710,7 +3277,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 50
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 109,
@@ -2863,7 +3430,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 59
+        "y": 91
       },
       "hiddenSeries": false,
       "id": 118,
@@ -2987,7 +3554,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 59
+        "y": 91
       },
       "hiddenSeries": false,
       "id": 111,
@@ -3176,9 +3743,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "Eduard-Ironfish-TdS",
-          "value": "Eduard-Ironfish-TdS"
+          "selected": true,
+          "text": "Ironfish-TdS",
+          "value": "Ironfish-TdS"
         },
         "datasource": "metricsdb",
         "definition": "SHOW TAG VALUES FROM ironfishmonitor WITH KEY=host",
@@ -3206,7 +3773,7 @@
         "auto_count": 30,
         "auto_min": "10s",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "30s",
           "value": "30s"
         },
@@ -3271,7 +3838,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3304,8 +3871,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "4bdb5df6d7ecc1f0f6a48644d3d42a0d4a6ee82f8e4c4753e693ad623f5976d53fee018fd45c903c139d83",
-          "value": "4bdb5df6d7ecc1f0f6a48644d3d42a0d4a6ee82f8e4c4753e693ad623f5976d53fee018fd45c903c139d83"
+          "text": "62f86f1c97a780337284ce67d369d20f1cc3bde17f1966df26a9181a68af2bd2ef10b3fb0b333a7558b090",
+          "value": "62f86f1c97a780337284ce67d369d20f1cc3bde17f1966df26a9181a68af2bd2ef10b3fb0b333a7558b090"
         },
         "datasource": "metricsdb",
         "definition": "SHOW TAG VALUES FROM \"ironfishmonitor\" WITH KEY = \"pubkey\" WHERE (\"host\" =~ /^$server$/)  limit 1",
@@ -3360,8 +3927,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "208832",
-          "value": "208832"
+          "text": "66247",
+          "value": "66247"
         },
         "datasource": "metricsdb",
         "definition": "SELECT userId FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/)  limit 1",
@@ -3387,9 +3954,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "dzonile",
-          "value": "dzonile"
+          "text": "None",
+          "value": ""
         },
         "datasource": "metricsdb",
         "definition": "SELECT graffiti FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/)  limit 1",
@@ -3435,5 +4003,5 @@
   "timezone": "",
   "title": "Ironfish Validator Dashboard",
   "uid": "IronfishGO",
-  "version": 44
+  "version": 61
 }

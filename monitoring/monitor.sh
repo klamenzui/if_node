@@ -77,7 +77,8 @@ if [ "$version" != "$versionRemote" ]; then
 fi
 #logInfo=$(journalctl --unit=ironfishd-pool -n 1 --no-pager | grep -Po "(^|\s)+(Found share: )\K([\sA-z0-9/]|\.)*(?=\s|$)")
 service_name="%service_name%"
-if [ "$service_name"=="%service_name%" ]; then
+tmp="service_name"
+if [ "$service_name"=="%$tmp%" ]; then
 	service_name="ironfishd-pool"
 fi
 logInfo=$(journalctl --unit=$service_name -n 1 --no-pager | grep -Po "(^|\s)+(Found share: )\K([\sA-z0-9/]|\.)*(?=\s|$)")

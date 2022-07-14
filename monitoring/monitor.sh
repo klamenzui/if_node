@@ -87,6 +87,7 @@ hashRate=${logInfoArr[2]}
 if [ "$hashRate" == "" ]; then
 	hashRate=0
 fi
+log "graffiti"
 log "userId"
 log "versionRemote"
 log "needsUpdate"

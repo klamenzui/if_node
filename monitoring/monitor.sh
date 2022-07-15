@@ -38,10 +38,10 @@ if [ "$statusNode" == "STARTED" ]; then
 	status=1
 fi
 logentry="ironfishmonitor,pubkey=$identityPubkey status=$status"
-log "statusMining" "STOPED" "STARTED"
-log "statusSyncer" "NOT" "SYNCING" "SYNCED" "IDLE"
-log "statusBlockchain" "NOT" "SYNCING" "SYNCED"
-log "statusTelemetry" "STOPED" "STARTED"
+log "statusMining" "STOPPED" "STARTED"
+log "statusSyncer" "STOPPED" "NOT" "SYNCING" "SYNCED" "IDLE"
+log "statusBlockchain" "STOPPED" "NOT" "SYNCING" "SYNCED"
+log "statusTelemetry" "STOPPED" "STARTED"
 log "version"
 graffiti=$(yarn ironfish config:get blockGraffiti | grep -Po "(^\")\K([A-z0-9])*(?=\"$)")
 

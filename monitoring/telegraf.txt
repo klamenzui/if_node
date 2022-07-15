@@ -23,7 +23,7 @@
 
 # Output Plugin InfluxDB
 [[outputs.influxdb]]
-  database = "metricsdb"
+  database = "%telegraf_database%"
   urls = [ "%main_url%" ]
   username = "%telegraf_user%"
   password = "%telegraf_pass%"

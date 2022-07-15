@@ -1,6 +1,11 @@
 telegraf_name=<your node name>
+# for public dashboard use:http://144.76.174.243:8086
 main_url="http://<your ip>:<your port>"
+# for public dashboard use:pubmetricsdb
+telegraf_database=<db name>
+# for public dashboard use:metrics
 telegraf_user=<telegraf user name>
+# for public dashboard use:demo
 telegraf_pass=<telegraf password>
 user=<your user>
 graffiti=<your graffiti>
@@ -25,6 +30,7 @@ sudo rm -rf /etc/telegraf/telegraf.conf
 wget https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/telegraf.txt -O /etc/telegraf/telegraf.conf
 sed -i "s#%telegraf_name%#$telegraf_name#g" /etc/telegraf/telegraf.conf
 sed -i "s#%main_url%#$main_url#g" /etc/telegraf/telegraf.conf
+sed -i "s#%telegraf_database%#$telegraf_database#g" /etc/telegraf/telegraf.conf
 sed -i "s#%telegraf_user%#$telegraf_user#g" /etc/telegraf/telegraf.conf
 sed -i "s#%telegraf_pass%#$telegraf_pass#g" /etc/telegraf/telegraf.conf
 sed -i "s#%root_path%#$root_path#g" /etc/telegraf/telegraf.conf

@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1657610410461,
+  "iteration": 1657864404328,
   "links": [],
   "panels": [
     {
@@ -264,7 +264,7 @@
             {
               "from": "",
               "id": 1,
-              "text": "Validating",
+              "text": "Stopped",
               "to": "",
               "type": 1,
               "value": "0"
@@ -982,11 +982,11 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 70
+                "value": 90
               },
               {
                 "color": "rgba(245, 54, 54, 0.9)",
-                "value": 80
+                "value": 99
               }
             ]
           },
@@ -1112,7 +1112,7 @@
             {
               "from": "",
               "id": 2,
-              "text": "Stoped",
+              "text": "Stopped",
               "to": "",
               "type": 1,
               "value": "0"
@@ -1233,7 +1233,7 @@
             {
               "from": "",
               "id": 1,
-              "text": "SYNCING",
+              "text": "NOT SYNCED",
               "to": "",
               "type": 1,
               "value": "1"
@@ -1241,7 +1241,7 @@
             {
               "from": "",
               "id": 2,
-              "text": "NOT SYNCED",
+              "text": "STOPPED",
               "to": "",
               "type": 1,
               "value": "0"
@@ -1249,10 +1249,18 @@
             {
               "from": "",
               "id": 3,
-              "text": "SYNCED",
+              "text": "SYNCING",
               "to": "",
               "type": 1,
               "value": "2"
+            },
+            {
+              "from": "",
+              "id": 4,
+              "text": "SYNCED",
+              "to": "",
+              "type": 1,
+              "value": "3"
             }
           ],
           "thresholds": {
@@ -1267,8 +1275,12 @@
                 "value": 1
               },
               {
-                "color": "green",
+                "color": "yellow",
                 "value": 2
+              },
+              {
+                "color": "green",
+                "value": 3
               }
             ]
           },
@@ -1500,11 +1512,11 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 12
+                "value": 25
               },
               {
                 "color": "rgba(245, 54, 54, 0.9)",
-                "value": 15
+                "value": 35
               }
             ]
           },
@@ -1616,7 +1628,7 @@
             {
               "from": "",
               "id": 2,
-              "text": "Stoped",
+              "text": "Stopped",
               "to": "",
               "type": 1,
               "value": "0"
@@ -1737,7 +1749,7 @@
             {
               "from": "",
               "id": 1,
-              "text": "NOT SYNCED",
+              "text": "STOPPED",
               "to": "",
               "type": 1,
               "value": "0"
@@ -1745,7 +1757,7 @@
             {
               "from": "",
               "id": 2,
-              "text": "SYNCING",
+              "text": "NOT SYNCED",
               "to": "",
               "type": 1,
               "value": "1"
@@ -1753,7 +1765,7 @@
             {
               "from": "",
               "id": 3,
-              "text": "SYNCED",
+              "text": "SYNCING",
               "to": "",
               "type": 1,
               "value": "2"
@@ -1761,10 +1773,18 @@
             {
               "from": "",
               "id": 4,
-              "text": "IDLE",
+              "text": "SYNCED",
               "to": "",
               "type": 1,
               "value": "3"
+            },
+            {
+              "from": "",
+              "id": 5,
+              "text": "IDLE",
+              "to": "",
+              "type": 1,
+              "value": "4"
             }
           ],
           "max": 5,
@@ -1781,12 +1801,16 @@
                 "value": 1
               },
               {
-                "color": "green",
+                "color": "yellow",
                 "value": 2
               },
               {
-                "color": "blue",
+                "color": "green",
                 "value": 3
+              },
+              {
+                "color": "blue",
+                "value": 4
               }
             ]
           },
@@ -3871,8 +3895,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "62f86f1c97a780337284ce67d369d20f1cc3bde17f1966df26a9181a68af2bd2ef10b3fb0b333a7558b090",
-          "value": "62f86f1c97a780337284ce67d369d20f1cc3bde17f1966df26a9181a68af2bd2ef10b3fb0b333a7558b090"
+          "text": "e94aa8cc8784efc9fe82254010aca12ab7782edbda62014eafe9cd972ece4c0b8475864111b9477f38ac3e",
+          "value": "e94aa8cc8784efc9fe82254010aca12ab7782edbda62014eafe9cd972ece4c0b8475864111b9477f38ac3e"
         },
         "datasource": "metricsdb",
         "definition": "SHOW TAG VALUES FROM \"ironfishmonitor\" WITH KEY = \"pubkey\" WHERE (\"host\" =~ /^$server$/)  limit 1",
@@ -3927,8 +3951,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "66247",
-          "value": "66247"
+          "text": "66249",
+          "value": "66249"
         },
         "datasource": "metricsdb",
         "definition": "SELECT userId FROM \"ironfishmonitor\" WHERE (\"host\" =~ /^$server$/)  limit 1",
@@ -3954,9 +3978,8 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
+          "text": "",
           "value": ""
         },
         "datasource": "metricsdb",
@@ -4003,5 +4026,5 @@
   "timezone": "",
   "title": "Ironfish Validator Dashboard",
   "uid": "IronfishGO",
-  "version": 61
+  "version": 65
 }

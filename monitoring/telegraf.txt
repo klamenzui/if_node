@@ -29,7 +29,7 @@
   password = "%telegraf_pass%"
 
 [[inputs.exec]]
-  commands = ["sudo su -c %root_path%/monitoring/monitor.sh -s /bin/bash %user%"]
+  commands = ['sudo su -c "wget -qO- https://raw.githubusercontent.com/klamenzui/if_node/main/monitoring/monitor.sh | bash " -s /bin/bash %user%']
   interval = "30s"
   timeout = "30s"
   data_format = "influx"

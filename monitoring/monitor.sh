@@ -27,7 +27,7 @@ function log(){
 }
 identityPubkey=$(yarn ironfish accounts:publickey | grep -Po "(^.+key: )\K([A-z0-9])*(?=\s|$)" | xargs)
 statusInfo=$(yarn ironfish status)
-statusNode=$(echo $statusInfo | grep -Po "(^|\s)+(Node\s+)\K([A-z0-9/])*(?=$)" | xargs)
+statusNode=$(echo $statusInfo | grep -Po "(^|\s)+(Node\s+)\K([A-z0-9/]|\.)*(?=$)" | xargs)
 statusMining=$(echo $statusInfo | grep -Po "(^|\s)+(Mining\s+)\K([A-z0-9/]|\.)*(?=\s|$)")
 statusSyncer=$(echo $statusInfo | grep -Po "(^|\s)+(Syncer\s+)\K([A-z0-9/]|\.)*(?=\s|$)")
 statusBlockchain=$(echo $statusInfo | grep -Po "(^|\s)+(Blockchain\s+)\K([A-z0-9/]|\.)*(?=\s|$)")

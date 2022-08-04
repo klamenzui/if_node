@@ -79,7 +79,6 @@ async function resultToObj (stdout, lineSep, keyValSep, skipLines) {
 }
 
 async function main () {
-	console.log(require("os").userInfo().username);
 	var identityPubkey = await runCommand('ironfish accounts:publickey');
 	identityPubkey = identityPubkey.split('\n').slice(2);
 	identityPubkey = await resultToObj(identityPubkey[0], /,\s+/, /:\s+/);

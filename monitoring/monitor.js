@@ -2,9 +2,10 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const https = require('https');
 const fs = require('fs');
+const os = require('os');
 
-
-var cdHome = 'cd $HOME/ironfish/ironfish-cli/ && ';
+const user = os.userInfo();
+const cdHome = 'cd ' + user.homedir + '/ironfish/ironfish-cli/ && ';
 var logentry = '';
 var logData = {};
 
@@ -79,6 +80,10 @@ async function resultToObj (stdout, lineSep, keyValSep, skipLines) {
 }
 
 async function main () {
+	var service_name = '%service_name%';
+	if ( service_name == '%'+'service_name'+'%') {
+		service_name="ironfishd-pool"
+	}
 	var identityPubkey = await runCommand('ironfish accounts:publickey');
 	identityPubkey = identityPubkey.split('\n').slice(2);
 	identityPubkey = await resultToObj(identityPubkey[0], /,\s+/, /:\s+/);
@@ -89,7 +94,7 @@ async function main () {
 	}
 	logentry = 'ironfishmonitor,pubkey='+identityPubkey['public key']+' status=' + status;
 	var userInfo = await req('https://api.ironfish.network/users/find?graffiti=' + statusInfo['Block Graffiti']);
-	var journalInfo = await resultToObj(await runCommand('journalctl --unit=ironfishd-pool -n 1 --no-pager', false), '\n', null, 1);
+	var journalInfo = await resultToObj(await runCommand('journalctl --unit=' + service_name + ' -n 1 --no-pager', false), '\n', null, 1);
 	journalInfo = journalInfo[0].split(' ');
 	log("hashRate", journalInfo[journalInfo.length - 2]);
 	log("statusMining", statusInfo['Mining'].split(' ')[0], "STOPPED", "STARTED");
@@ -108,11 +113,12 @@ async function main () {
 	log('totalPoints', userInfoAll.pools.main.points);
 	log('nodeUptime', userInfoAll.node_uptime.total_hours);
 	log('sendTransaction', userInfoAll.metrics.send_transaction.count);
-	const ironfish_data = JSON.parse(fs.readFileSync('/'+require("os").userInfo().username+'/monitoring/ironfish_data.txt', {encoding:'utf8', flag:'r'}));
+	const ironfish_data = JSON.parse(fs.readFileSync(user.homedir+'/monitoring/ironfish_data.txt', {encoding:'utf8', flag:'r'}));
 	log('validatorBalance', ironfish_data.balance);
 	log('validatorAvailableAmount', ironfish_data.availableAmount);
 	log('needsUpdate', remoteVersionInfo.ironfish.version == version ? 0: 1);
 	console.log(logentry);
+	//console.log(user);
 }
 
 main();

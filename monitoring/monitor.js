@@ -79,7 +79,7 @@ async function resultToObj (stdout, lineSep, keyValSep, skipLines) {
 }
 
 async function main () {
-	console.log(__dirname);
+	console.log(require("os").userInfo().username);
 	var identityPubkey = await runCommand('ironfish accounts:publickey');
 	identityPubkey = identityPubkey.split('\n').slice(2);
 	identityPubkey = await resultToObj(identityPubkey[0], /,\s+/, /:\s+/);
@@ -109,7 +109,7 @@ async function main () {
 	log('totalPoints', userInfoAll.pools.main.points);
 	log('nodeUptime', userInfoAll.node_uptime.total_hours);
 	log('sendTransaction', userInfoAll.metrics.send_transaction.count);
-	const ironfish_data = JSON.parse(fs.readFileSync('~/monitoring/ironfish_data.txt', {encoding:'utf8', flag:'r'}));
+	const ironfish_data = JSON.parse(fs.readFileSync('/'+require("os").userInfo().username+'/monitoring/ironfish_data.txt', {encoding:'utf8', flag:'r'}));
 	log('validatorBalance', ironfish_data.balance);
 	log('validatorAvailableAmount', ironfish_data.availableAmount);
 	log('needsUpdate', remoteVersionInfo.ironfish.version == version ? 0: 1);

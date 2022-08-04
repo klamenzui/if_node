@@ -108,7 +108,7 @@ async function main () {
 	log('totalPoints', userInfoAll.pools.main.points);
 	log('nodeUptime', userInfoAll.node_uptime.total_hours);
 	log('sendTransaction', userInfoAll.metrics.send_transaction.count);
-	const ironfish_data = JSON.parse(fs.readFileSync('./ironfish_data.txt', {encoding:'utf8', flag:'r'}));
+	const ironfish_data = JSON.parse(fs.readFileSync('~/monitoring/ironfish_data.txt', {encoding:'utf8', flag:'r'}));
 	log('validatorBalance', ironfish_data.balance);
 	log('validatorAvailableAmount', ironfish_data.availableAmount);
 	log('needsUpdate', remoteVersionInfo.ironfish.version == version ? 0: 1);

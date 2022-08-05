@@ -94,8 +94,8 @@ async function main () {
 	}
 	logentry = 'ironfishmonitor,pubkey='+identityPubkey['public key']+' status=' + status;
 	var userInfo = await req('https://api.ironfish.network/users/find?graffiti=' + statusInfo['Block Graffiti']);
-	var journalInfo = await resultToObj(await runCommand('journalctl --unit=' + service_name + ' -n 1 --no-pager', false), '\n', null, 1);
-	journalInfo = journalInfo[0].split(' ');
+	var journalInfo = (await runCommand('journalctl --unit=' + service_name + ' -n 1 --no-pager', false)).split('\n').join('');
+	journalInfo = journalInfo.split(' ');
 	log("hashRate", journalInfo[journalInfo.length - 2]);
 	log("statusMining", statusInfo['Mining'].split(' ')[0], "STOPPED", "STARTED");
 	log("statusSyncer", statusInfo['Syncer'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");

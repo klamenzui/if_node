@@ -8,9 +8,11 @@ const user = os.userInfo();
 const cdHome = 'cd ' + user.homedir + '/ironfish/ironfish-cli/ && ';
 var logentry = '';
 var logData = {};
+
 function isNum(val) {
 	return ('' + val).match(/^[0-9]+\.?[0-9]*$/) != null;
 }
+
 async function log() {
 	let arg = Array.from(arguments);
 	let key = arg.shift();
@@ -52,6 +54,7 @@ async function req(url) {
 	}
 	return response_body;
 }
+
 async function runCommand(command, inYarn) {
 	inYarn = typeof inYarn == 'undefined' || inYarn? 'yarn ': '';
 	const { stdout, stderr, error } = await exec(cdHome + inYarn + command);

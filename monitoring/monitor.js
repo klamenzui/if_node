@@ -8,7 +8,9 @@ const user = os.userInfo();
 const cdHome = 'cd ' + user.homedir + '/ironfish/ironfish-cli/ && ';
 var logentry = '';
 var logData = {};
-
+function isNum(val) {
+	return ('' + val).match(/^[0-9]+\.?[0-9]*$/) != null;
+}
 async function log() {
 	let arg = Array.from(arguments);
 	let key = arg.shift();
@@ -16,7 +18,7 @@ async function log() {
 	if(arg.length > 0) {
 		val = '' + arg.indexOf(val);
 	}
-	if(val.match(/^[0-9]+\.?[0-9]*$/) == null) {
+	if(!isNum(val)) {
 		val = '"' + val + '"';
 	}
 	logentry += ',' + key + '=' + val;
@@ -96,7 +98,8 @@ async function main () {
 	var userInfo = await req('https://api.ironfish.network/users/find?graffiti=' + statusInfo['Block Graffiti']);
 	var journalInfo = (await runCommand('journalctl --unit=' + service_name + ' -n 1 --no-pager', false)).split('\n').join('');
 	journalInfo = journalInfo.split(' ');
-	log("hashRate", journalInfo[journalInfo.length - 2]);
+	var hashRate = journalInfo[journalInfo.length - 2];
+	log("hashRate", isNum(hashRate)? hashRate: 0);
 	log("statusMining", statusInfo['Mining'].split(' ')[0], "STOPPED", "STARTED");
 	log("statusSyncer", statusInfo['Syncer'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
 	log("statusBlockchain", statusInfo['Blockchain'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");

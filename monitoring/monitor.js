@@ -105,7 +105,7 @@ async function main () {
 	log("hashRate", isNum(hashRate)? hashRate: 0);
 	log("statusMining", statusInfo['Mining'].split(' ')[0], "STOPPED", "STARTED");
 	log("statusSyncer", statusInfo['Syncer'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
-	log("statusBlockchain", statusInfo['Blockchain'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
+	log("statusBlockchain", statusInfo['Blockchain'].split(' ')[6].replaceAll(/\(|\)/g,''), "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
 	log("statusTelemetry", statusInfo['Telemetry'].split(' ')[0], "STOPPED", "STARTED");
 	log("statusWorkers", statusInfo['Workers'].split(' ')[0], "STOPPED", "STARTED");
 	var version = statusInfo['Version'].split(' ')[0];

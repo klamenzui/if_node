@@ -104,7 +104,10 @@ async function main () {
 	var hashRate = journalInfo[journalInfo.length - 2];
 	log("hashRate", isNum(hashRate)? hashRate: 0);
 	log("statusMining", statusInfo['Mining'].split(' ')[0], "STOPPED", "STARTED");
-	log("statusSyncer", statusInfo['Syncer'].split(' ')[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
+	
+	var syncer = statusInfo['Syncer'].split(' ');
+	log("statusSyncer", syncer[0], "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
+	log("statusSyncPercent", syncer[syncer.length - 1].replaceAll(/[^0-9\.,]/g,''));
 	
 	log("statusBlockchain", statusInfo['Blockchain'].split(' ')[6].replaceAll(/\(|\)/g,''), "STOPPED", "NOT", "SYNCING", "SYNCED", "IDLE");
 	log("statusTelemetry", statusInfo['Telemetry'].split(' ')[0], "STOPPED", "STARTED");
